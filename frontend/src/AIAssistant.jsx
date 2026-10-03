@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import "./AIAssistant.css";
 
-const API = "http://localhost:5000/api";
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 function AIAssistant() {
   const [message, setMessage] = useState("");
@@ -192,3 +192,4 @@ function AIAssistant() {
 }
 
 export default AIAssistant;
+

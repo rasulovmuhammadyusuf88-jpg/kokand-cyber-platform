@@ -1,4 +1,4 @@
-const express = require("express");
+﻿const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const bcrypt = require("bcryptjs");
@@ -21,11 +21,17 @@ const PORT = process.env.PORT || 5000;
 const JWT_SECRET =
   process.env.JWT_SECRET || "kokand-cyber-campus-development-secret";
 
-const db = new Database(path.join(__dirname, "kokand_cyber.db"));
+const FRONTEND_URL =
+  process.env.FRONTEND_URL || "http://localhost:5173";
+
+const DB_PATH =
+  process.env.DB_PATH || path.join(__dirname, "kokand_cyber.db");
+
+const db = new Database(DB_PATH);
 
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: FRONTEND_URL,
     credentials: true,
   })
 );
@@ -481,7 +487,7 @@ seedUsers();
 
 const io = new Server(httpServer, {
   cors: {
-    origin: "http://localhost:5173",
+    origin: FRONTEND_URL,
     methods: ["GET", "POST"],
     credentials: true,
   },
@@ -1747,7 +1753,7 @@ app.use((err, req, res, next) => {
    START SERVER
 ========================================================= */
 
-httpServer.listen(PORT, () => {
+httpServer.listen(PORT, "0.0.0.0", () => {
   console.log("");
 
   console.log(
@@ -1763,15 +1769,15 @@ httpServer.listen(PORT, () => {
   );
 
   console.log(
-    `Server: http://localhost:${PORT}`
+    `Server: http://0.0.0.0:${PORT}`
   );
 
   console.log(
-    `Health: http://localhost:${PORT}/api/health`
+    `Health: http://0.0.0.0:${PORT}/api/health`
   );
 
   console.log(
-    "Database: kokand_cyber.db"
+    `Database: ${DB_PATH}`
   );
 
   console.log(
@@ -1788,3 +1794,4 @@ httpServer.listen(PORT, () => {
 
   console.log("");
 });
+

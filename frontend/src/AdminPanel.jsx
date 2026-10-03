@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import "./AdminPanel.css";
 import CTFAdmin from "./CTFAdmin";
 import AdminAICenter from "./AdminAICenter";
-const API_URL = "http://localhost:5000/api";
+const API_URL = import.meta.env.VITE_API_URL || "http://localhost:5000/api";
 
 function AdminPanel({ token, onClose }) {
   const [activeTab, setActiveTab] = useState("students");
@@ -810,4 +810,5 @@ function Empty({ text }) {
 }
 
 export default AdminPanel;
+
 
