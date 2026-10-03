@@ -1,0 +1,47 @@
+html,
+body,
+#root {
+  margin: 0;
+  min-height: 100%;
+  width: 100%;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+.admin-floating-button {
+  position: fixed;
+  right: 25px;
+  bottom: 25px;
+  z-index: 5000;
+  border: 1px solid #526d2a;
+  background: #101810;
+  color: #b7ff3c;
+  padding: 12px 17px;
+  border-radius: 9px;
+  font-size: 9px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.admin-floating-button:hover {
+  background: #172118;
+  transform: translateY(-2px);
+}
+
+.admin-floating-button:active {
+  transform: translateY(0);
+}
+
+@media (max-width: 650px) {
+  .admin-floating-button {
+    right: 15px;
+    bottom: 15px;
+    padding: 10px 13px;
+    font-size: 8px;
+  }
+}
